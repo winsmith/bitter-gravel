@@ -1,4 +1,6 @@
 from PIL import Image, ImageFont, ImageDraw
+from subprocess import call
+
 
 class WordGenerator:
     """
@@ -35,10 +37,13 @@ class BitterGravelist:
         image = Image.open(self.image_generator.get_image())
         draw = ImageDraw.Draw(image)
 
-        font = ImageFont.truetype("/Users/danieljilg/Downloads/master_of_break/master_of_break.ttf", 15)
+        font = ImageFont.truetype("/Users/danieljilg/Downloads/master_of_break/master_of_break.ttf", 115)
         draw.text((10, 25), "world", font=font)
 
-        image.save('/Users/danieljilg//Desktop/output.png', 'PNG')
+        image_save_file_name = '/Users/danieljilg//Desktop/output.png'
+        image.save(image_save_file_name, 'PNG')
+        call(['open', image_save_file_name])
+
 
 if __name__ == '__main__':
     BitterGravelist().generate_gravel()
